@@ -1,0 +1,10 @@
+[package]
+name = "cowor"
+version = "0.1.0"
+authors = ["zatmos"]
+edition = "2021"
+description = "A color conversion and manipulation library"
+repository = "https://github.com/zatmos/cowor/"
+license = "GPL-3.0-only"
+keywords = ["color", "conversion", "pixel", "graphics"]
+categories = ["graphics", "multimedia::images"]
