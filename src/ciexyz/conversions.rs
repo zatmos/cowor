@@ -95,3 +95,17 @@ impl From<[f32; 3]> for Ciexyz {
         Self(x, y, z)
     }
 }
+
+/// Convert an CIEXYZ color into an array of 3 floats.
+///
+/// # Examples
+///
+/// ```
+/// use cowor::Ciexyz;
+/// let [x, y, z]: [f32; 3] = Ciexyz::new(0.1, 0.2, 0.3).unwrap().into();
+/// ```
+impl From<Ciexyz> for [f32; 3] {
+    fn from(ciexyz: Ciexyz) -> Self {
+        [ciexyz.x(), ciexyz.y(), ciexyz.z()]
+    }
+}
