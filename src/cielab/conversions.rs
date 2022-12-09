@@ -86,3 +86,18 @@ impl TryFrom<[f32; 3]> for Cielab {
         }
     }
 }
+
+/// Convert an CIELAB color into an array of 3 floats.
+///
+/// # Examples
+///
+/// ```
+/// use cowor::Cielab;
+/// let [x, y, z]: [f32; 3] = Cielab::new(10.0, 20.0, 30.0).unwrap().into();
+/// ```
+impl From<Cielab> for [f32; 3] {
+    fn from(cielab: Cielab) -> Self {
+        let Cielab(l, a, b) = cielab;
+        [l, a, b]
+    }
+}
