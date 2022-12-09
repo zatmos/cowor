@@ -151,6 +151,7 @@ impl From<[f32; 3]> for Srgb {
 /// ```
 impl From<Srgb> for [f32; 3] {
     fn from(srgb: Srgb) -> Self {
-        [srgb.red(), srgb.green(), srgb.blue()]
+        let Srgb(r, g, b) = srgb;
+        [r, g, b]
     }
 }
