@@ -115,6 +115,7 @@ impl TryFrom<[f32; 3]> for Ciexyz {
 /// ```
 impl From<Ciexyz> for [f32; 3] {
     fn from(ciexyz: Ciexyz) -> Self {
-        [ciexyz.x(), ciexyz.y(), ciexyz.z()]
+        let Ciexyz(x, y, z) = ciexyz;
+        [x, y, z]
     }
 }
