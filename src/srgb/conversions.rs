@@ -111,3 +111,18 @@ impl From<[u8; 3]> for Srgb {
         Self::new(r, g, b)
     }
 }
+
+/// New sRGB color from an array of 3 floats.
+///
+/// # Examples
+///
+/// ```
+/// use cowor::Srgb;
+/// let srgb: Srgb = [0.1, 0.2, 0.3].into();
+/// ```
+impl From<[f32; 3]> for Srgb {
+    fn from(array: [f32; 3]) -> Self {
+        let [r, g, b] = array;
+        Self(r, g, b)
+    }
+}
