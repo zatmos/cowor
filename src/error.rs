@@ -13,3 +13,14 @@ impl fmt::Display for OutOfGamut {
 }
 
 impl error::Error for OutOfGamut {}
+
+#[derive(Debug)]
+pub struct OutOfSpecification;
+
+impl fmt::Display for OutOfSpecification {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "invalid color according to the specifications of its color space")
+    }
+}
+
+impl error::Error for OutOfSpecification {}
