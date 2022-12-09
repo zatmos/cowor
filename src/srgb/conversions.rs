@@ -140,3 +140,17 @@ impl From<[f32; 3]> for Srgb {
         Self(r, g, b)
     }
 }
+
+/// Convert an sRGB color into an array of 3 floats.
+///
+/// # Examples
+///
+/// ```
+/// use cowor::Srgb;
+/// let [r, g, b]: [f32; 3] = Srgb::new(10, 20, 30).into();
+/// ```
+impl From<Srgb> for [f32; 3] {
+    fn from(srgb: Srgb) -> Self {
+        [srgb.red(), srgb.green(), srgb.blue()]
+    }
+}
