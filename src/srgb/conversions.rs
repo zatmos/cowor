@@ -41,7 +41,7 @@ impl TryFrom<Ciexyz> for Srgb {
 
     fn try_from(ciexyz: Ciexyz) -> Result<Self, Self::Error> {
         let [xr, xg, xb, yr, yg, yb, zr, zg, zb] = FROM_CIEXYZ_CONVERSION_MATRIX;
-        let [x, y, z] = [ciexyz.x(), ciexyz.y(), ciexyz.z()];
+        let [x, y, z]: [f32; 3] = ciexyz.into();
         let lr = x * xr + y * xg + z * xb;
         let lg = x * yr + y * yg + z * yb;
         let lb = x * zr + y * zg + z * zb;
