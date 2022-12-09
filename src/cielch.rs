@@ -26,7 +26,7 @@ impl Cielch {
     /// assert!(invalid.is_none());
     /// ```
     pub fn new(lightness: f32, chroma: f32, hue: f32) -> Option<Self> {
-        match (0f32..=100f32).contains(&lightness) {
+        match (0f32..=100f32).contains(&lightness) && chroma > 0.0 {
             true    => Some(Self(lightness, chroma, hue)),
             false   => None,
         }

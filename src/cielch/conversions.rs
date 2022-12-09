@@ -71,7 +71,7 @@ impl TryFrom<[f32; 3]> for Cielch {
 
     fn try_from(array: [f32; 3]) -> Result<Self, Self::Error> {
         let [l, c, h] = array;
-        match (0f32..100f32).contains(&l) {
+        match (0f32..100f32).contains(&l) && c > 0.0 {
             true    => Ok(Self(l, c, h)),
             false   => Err(OutOfSpecification),
         }
