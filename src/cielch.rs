@@ -91,8 +91,8 @@ impl Cielch {
 /// ```
 impl PartialEq for Cielch {
     fn eq(&self, other: &Self) -> bool {
-        let lhs = [self.lightness(), self.chroma(), self.hue()];
-        let rhs = [other.lightness(), other.chroma(), other.hue()];
+        let lhs: [f32; 3] = (*self).into();
+        let rhs: [f32; 3] = (*other).into();
         match self.chroma() != 0f32 || other.chroma() != 0f32 {
             true    => (0..3).all(|x| lhs[x] == rhs[x]),
             false   => self.lightness() == other.lightness(),
