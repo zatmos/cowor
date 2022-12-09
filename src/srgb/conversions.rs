@@ -112,6 +112,20 @@ impl From<[u8; 3]> for Srgb {
     }
 }
 
+/// Convert an sRGB color into an array of 3 unsigned 8 bit integers.
+///
+/// # Examples
+///
+/// ```
+/// use cowor::Srgb;
+/// let [r, g, b]: [u8; 3] = Srgb::new(10, 20, 30).into();
+/// ```
+impl From<Srgb> for [u8; 3] {
+    fn from(srgb: Srgb) -> Self {
+        [srgb.red_as_u8(), srgb.green_as_u8(), srgb.blue_as_u8()]
+    }
+}
+
 /// New sRGB color from an array of 3 floats.
 ///
 /// # Examples
