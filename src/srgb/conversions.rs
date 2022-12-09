@@ -75,6 +75,7 @@ impl TryFrom<Cielab> for Srgb {
     }
 }
 
+/// Conversion from CIELCh to sRGB.
 /// The conversion may fail and return an OutOfGamut error
 /// if the CIELCh color can not be represented in the sRGB color gamut.
 ///
