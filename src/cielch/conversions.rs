@@ -77,3 +77,18 @@ impl TryFrom<[f32; 3]> for Cielch {
         }
     }
 }
+
+/// Convert an CIELCh color into an array of 3 floats.
+///
+/// # Examples
+///
+/// ```
+/// use cowor::Cielch;
+/// let [x, y, z]: [f32; 3] = Cielch::new(10.0, 20.0, 30f32.to_radians()).unwrap().into();
+/// ```
+impl From<Cielch> for [f32; 3] {
+    fn from(cielch: Cielch) -> Self {
+        let Cielch(l, c, h) = cielch;
+        [l, c, h]
+    }
+}
