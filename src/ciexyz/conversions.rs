@@ -80,3 +80,18 @@ impl From<Cielch> for Ciexyz {
         Self::from(cielab)
     }
 }
+
+/// New CIEXYZ color from an array of 3 floats.
+///
+/// # Examples
+///
+/// ```
+/// use cowor::Ciexyz;
+/// let ciexyz: Ciexyz = [0.1, 0.2, 0.3].into();
+/// ```
+impl From<[f32; 3]> for Ciexyz {
+    fn from(array: [f32; 3]) -> Self {
+        let [x, y, z] = array;
+        Self(x, y, z)
+    }
+}
