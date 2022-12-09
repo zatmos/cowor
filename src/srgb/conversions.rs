@@ -102,7 +102,7 @@ impl TryFrom<Cielch> for Srgb {
 /// # Examples
 ///
 /// ```
-/// use cowor::{ Srgb };
+/// use cowor::Srgb;
 /// let srgb: Srgb = [10, 20, 30].into();
 /// ```
 impl From<[u8; 3]> for Srgb {
