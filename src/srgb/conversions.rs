@@ -95,3 +95,18 @@ impl TryFrom<Cielch> for Srgb {
         Self::try_from(ciexyz)
     }
 }
+
+/// New sRGB color from an array of 3 unsigned 8 bit integers.
+///
+/// # Examples
+///
+/// ```
+/// use cowor::{ Srgb };
+/// let srgb: Srgb = [10, 20, 30].into();
+/// ```
+impl From<[u8; 3]> for Srgb {
+    fn from(array: [u8; 3]) -> Self {
+        let [r, g, b] = array;
+        Self::new(r, g, b)
+    }
+}
