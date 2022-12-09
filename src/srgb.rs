@@ -187,8 +187,8 @@ impl Srgb {
 /// unsigned 8 bit integers are equal.
 impl PartialEq for Srgb {
     fn eq(&self, other: &Self) -> bool {
-        let lhs = [self.red_as_u8(), self.green_as_u8(), self.blue_as_u8()];
-        let rhs = [other.red_as_u8(), other.green_as_u8(), other.blue_as_u8()];
+        let lhs: [u8; 3] = (*self).into();
+        let rhs: [u8; 3] = (*other).into();
         (0..3).all(|x| lhs[x] == rhs[x])
     }
 }
