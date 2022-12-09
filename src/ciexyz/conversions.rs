@@ -1,4 +1,5 @@
 use crate::{
+    error::OutOfSpecification,
     Cielab,
     Cielch,
     Srgb
@@ -82,17 +83,25 @@ impl From<Cielch> for Ciexyz {
 }
 
 /// New CIEXYZ color from an array of 3 floats.
+/// Convertion may fail if the resulting color would fall outside
+/// the CIEXYZ specification. The error type in that case is an
+/// OutOfSpecification error.
 ///
 /// # Examples
 ///
 /// ```
 /// use cowor::Ciexyz;
-/// let ciexyz: Ciexyz = [0.1, 0.2, 0.3].into();
+/// let ciexyz: Ciexyz = [0.1, 0.2, 0.3].try_into().unwrap();
 /// ```
-impl From<[f32; 3]> for Ciexyz {
-    fn from(array: [f32; 3]) -> Self {
+impl TryFrom<[f32; 3]> for Ciexyz {
+    type Error = OutOfSpecification;
+
+    fn try_from(array: [f32; 3]) -> Result<Self, Self::Error> {
         let [x, y, z] = array;
-        Self(x, y, z)
+        match x > 0.0 && (0f32..1f32).contains(&y) && z > 0.0 {
+            true    => Ok(Self(x, y, z)),
+            false   => Err(OutOfSpecification),
+        }
     }
 }
 
